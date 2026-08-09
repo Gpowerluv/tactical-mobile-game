@@ -1,0 +1,4 @@
+.godot/
+!.godot/extension_list.cfg
+*.translation
+export_presets.cfg
