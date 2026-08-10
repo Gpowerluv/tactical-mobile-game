@@ -1,19 +1,22 @@
-import random
+class AIPatrolSystem:
+    def __init__(self, waypoints):
+        self.waypoints = waypoints
+        self.current_index = 0
+        self.alert_state = "PATROL"
 
-class RecoilSystem:
-    def __init__(self, vertical_recoil, horizontal_recoil, stamina_percent):
-        self.vert = vertical_recoil
-        self.horiz = horizontal_recoil
-        self.stamina = stamina_percent
+    def patrol_step(self):
+        target = self.waypoints[self.current_index]
+        print(f"[AI PATROL] Unit moving to Waypoint {self.current_index + 1}: {target} | State: {self.alert_state}")
+        self.current_index = (self.current_index + 1) % len(self.waypoints)
 
-    def calculate_shot_deviation(self):
-        sway_factor = (100 - self.stamina) * 0.05
-        vert_offset = self.vert + random.uniform(-0.5, 1.5) + sway_factor
-        horiz_offset = random.uniform(-self.horiz, self.horiz) + random.uniform(-sway_factor, sway_factor)
-        print(f"[GUNPLAY] Shot Fired | Vertical Kick: +{vert_offset:.2f} MOA | Horizontal Drift: {horiz_offset:.2f} MOA | Stamina Sway Impact: +{sway_factor:.2f}")
-        return vert_offset, horiz_offset
+    def trigger_alert(self, new_state):
+        self.alert_state = new_state
+        print(f"[AI ALERT] Threat level updated: *** {self.alert_state} ***")
 
-print("--- TACTICAL SIMULATION ENGINE: RECOIL & SWAY ---")
-gun = RecoilSystem(vertical_recoil=2.5, horizontal_recoil=1.2, stamina_percent=40)
-for i in range(3):
-    gun.calculate_shot_deviation()
+print("--- TACTICAL SIMULATION ENGINE: AI PATROL & ALERT LOOP ---")
+ai = AIPatrolSystem(["Sector Alpha", "Sector Bravo", "Main Gate"])
+ai.patrol_step()
+ai.patrol_step()
+ai.trigger_alert("SUSPICIOUS")
+ai.patrol_step()
+ai.trigger_alert("COMBAT")
