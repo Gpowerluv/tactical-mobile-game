@@ -1,30 +1,27 @@
-class MedicalSystem:
-    def __init__(self):
-        self.hp = 100
-        self.heavy_bleeding = False
-        self.fractured_leg = False
+import random
 
-    def receive_injury(self, injury_type):
-        if injury_type == "bleeding":
-            self.heavy_bleeding = True
-            print("[INJURY] Heavy bleeding sustained! HP will drain rapidly.")
-        elif injury_type == "fracture":
-            self.fractured_leg = True
-            print("[INJURY] Fractured leg sustained! Sprinting disabled.")
+class ExfilSystem:
+    def __init__(self, zone_name, req_item=None):
+        self.zone = zone_name
+        self.req_item = req_item
+        self.timer = 10  # seconds
 
-    def apply_treatment(self, medical_item):
-        if medical_item == "Tourniquet" and self.heavy_bleeding:
-            self.heavy_bleeding = False
-            print("[MEDICAL] Tourniquet applied. Heavy bleeding stopped.")
-        elif medical_item == "Surgical Kit" and self.fractured_leg:
-            self.fractured_leg = False
-            print("[MEDICAL] Surgical kit used. Fracture repaired.")
-        else:
-            print(f"[MEDICAL] Used {medical_item}.")
+    def search_container(self, container_type):
+        loot_pool = {"Safe": ["Gold Bar", "GPU", "Folder of Intelligence"], "Duffle Bag": ["Bandage", "5.56 Ammo", "Ration Bar"]}
+        items = loot_pool.get(container_type, ["Trash"])
+        found = random.choice(items)
+        print(f"[LOOTING] Searched {container_type}... Found: {found}")
+        return found
 
-print("--- TACTICAL SIMULATION ENGINE: MEDICAL SYSTEM ---")
-med = MedicalSystem()
-med.receive_injury("bleeding")
-med.receive_injury("fracture")
-med.apply_treatment("Tourniquet")
-med.apply_treatment("Surgical Kit")
+    def attempt_extract(self, player_inventory):
+        if self.req_item and self.req_item not in player_inventory:
+            print(f"[EXFIL DENIED] Zone '{self.zone}' requires: {self.req_item}")
+            return False
+        print(f"[EXFIL SUCCESS] Extraction timer ended ({self.timer}s). Successfully extracted from {self.zone}!")
+        return True
+
+print("--- TACTICAL SIMULATION ENGINE: EXTRACTION & LOOTING ---")
+raid = ExfilSystem("Cell Tower Exfil", req_item="Red Keycard")
+raid.search_container("Safe")
+raid.attempt_extract(["Gold Bar"])
+raid.attempt_extract(["Gold Bar", "Red Keycard"])
