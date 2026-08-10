@@ -1,27 +1,18 @@
-import random
+class AcousticSystem:
+    SURFACE_MODIFIERS = {"Concrete": 1.0, "Wood": 1.3, "Metal": 1.8, "Grass": 0.5}
+    MOVEMENT_MODIFIERS = {"Prone": 0.1, "Crouch": 0.4, "Walk": 1.0, "Sprint": 2.2}
 
-class ExfilSystem:
-    def __init__(self, zone_name, req_item=None):
-        self.zone = zone_name
-        self.req_item = req_item
-        self.timer = 10  # seconds
+    def calculate_footstep_audio(self, movement_state, surface_type, distance_to_ai):
+        base_db = 40.0
+        move_mult = self.MOVEMENT_MODIFIERS.get(movement_state, 1.0)
+        surf_mult = self.SURFACE_MODIFIERS.get(surface_type, 1.0)
+        generated_db = base_db * move_mult * surf_mult
+        audible_db = max(0.0, generated_db - (distance_to_ai * 0.8))
+        detected = audible_db > 15.0
+        print(f"[ACOUSTICS] {movement_state} on {surface_type} | Sound: {generated_db:.1f} dB | At AI ({distance_to_ai}m): {audible_db:.1f} dB | Heard: {detected}")
+        return detected
 
-    def search_container(self, container_type):
-        loot_pool = {"Safe": ["Gold Bar", "GPU", "Folder of Intelligence"], "Duffle Bag": ["Bandage", "5.56 Ammo", "Ration Bar"]}
-        items = loot_pool.get(container_type, ["Trash"])
-        found = random.choice(items)
-        print(f"[LOOTING] Searched {container_type}... Found: {found}")
-        return found
-
-    def attempt_extract(self, player_inventory):
-        if self.req_item and self.req_item not in player_inventory:
-            print(f"[EXFIL DENIED] Zone '{self.zone}' requires: {self.req_item}")
-            return False
-        print(f"[EXFIL SUCCESS] Extraction timer ended ({self.timer}s). Successfully extracted from {self.zone}!")
-        return True
-
-print("--- TACTICAL SIMULATION ENGINE: EXTRACTION & LOOTING ---")
-raid = ExfilSystem("Cell Tower Exfil", req_item="Red Keycard")
-raid.search_container("Safe")
-raid.attempt_extract(["Gold Bar"])
-raid.attempt_extract(["Gold Bar", "Red Keycard"])
+print("--- TACTICAL SIMULATION ENGINE: ACOUSTIC SYSTEM ---")
+sound = AcousticSystem()
+sound.calculate_footstep_audio("Sprint", "Metal", 25)
+sound.calculate_footstep_audio("Crouch", "Grass", 25)
