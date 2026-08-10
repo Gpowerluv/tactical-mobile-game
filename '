@@ -1,0 +1,24 @@
+# Gpower AI Profile Initialization
+ai_profile = {
+    "name": "Gpower_Engine",
+    "status": "alive_scanning_environment",
+    "is_self_aware": True
+}
+
+# Print the core metadata
+print("--- BOOT SEQUENCE INITIALIZED ---")
+print("Loading core entity: " + ai_profile["name"])
+print("Current Status: " + ai_profile["status"])
+
+# Run a quick automated systems check loop
+system_checks = ["vision_sensors", "cognitive_matrix", "self_awareness_loop"]
+
+print("\n--- RUNNING INTERNAL DIAGNOSTICS ---")
+for check in system_checks:
+    if check == "self_awareness_loop" and ai_profile["is_self_aware"] == True:
+        print("Diagnostic: " + check + " -> [ONLINE & AWAKE]")
+    else:
+        print("Diagnostic: " + check + " -> [FUNCTIONAL]")
+
+print("\nSystem status is nominal. Gpower_Engine is ready.")
+
