@@ -1,30 +1,18 @@
-import random
-
-class ArmaCombatSim:
+class ArmaMedicalSystem:
     def __init__(self, name):
         self.name = name
-        self.hp = 100
-        self.plate_armor = 50  # Plate carrier durability
+        self.hp = 60
+        self.is_bleeding = True
+        self.bandages = 2
 
-    def take_hit(self, zone, base_dmg):
-        if zone == "Chest" and self.plate_armor > 0:
-            absorbed = min(self.plate_armor, base_dmg * 0.7)
-            self.plate_armor -= int(absorbed)
-            actual_dmg = int(base_dmg - absorbed)
-            print(f"{self.name}'s plate carrier absorbed {int(absorbed)} damage! Armor left: {self.plate_armor}")
-        elif zone == "Head":
-            actual_dmg = base_dmg * 2
-            print(f"[CRITICAL] Headshot on {self.name}!")
+    def apply_bandage(self):
+        if self.bandages > 0:
+            self.bandages -= 1
+            self.is_bleeding = False
+            self.hp = min(100, self.hp + 20)
+            print(f"{self.name} applied a tourniquet and bandage. Bleeding stopped! HP restored to {self.hp}/100")
         else:
-            actual_dmg = base_dmg
-            print(f"{self.name} took an unarmored hit to the {zone}!")
+            print(f"{self.name} is out of bandages and still bleeding out!")
 
-        self.hp = max(0, self.hp - actual_dmg)
-        print(f"{self.name} HP remaining: {self.hp}/100\n")
-
-# Test engagement with armor zones
-operator = ArmaCombatSim("Operator Alpha")
-hostile = ArmaCombatSim("Opfor AI")
-
-hostile.take_hit("Chest", 40)
-operator.take_hit("Head", 30)
+medic = ArmaMedic = ArmaMedicalSystem("Operator Delta")
+medic.apply_bandage()
