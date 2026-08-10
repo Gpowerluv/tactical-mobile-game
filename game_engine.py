@@ -1,32 +1,30 @@
-class DamageSystem:
-    HITBOX_MULTIPLIERS = {"Head": 2.5, "Thorax": 1.0, "Stomach": 0.85, "Legs": 0.6}
+class MedicalSystem:
+    def __init__(self):
+        self.hp = 100
+        self.heavy_bleeding = False
+        self.fractured_leg = False
 
-    def __init__(self, armor_level, armor_durability):
-        self.armor_level = armor_level
-        self.durability = armor_durability
+    def receive_injury(self, injury_type):
+        if injury_type == "bleeding":
+            self.heavy_bleeding = True
+            print("[INJURY] Heavy bleeding sustained! HP will drain rapidly.")
+        elif injury_type == "fracture":
+            self.fractured_leg = True
+            print("[INJURY] Fractured leg sustained! Sprinting disabled.")
 
-    def process_hit(self, hitbox, base_damage, bullet_pen_class):
-        multiplier = self.HITBOX_MULTIPLIERS.get(hitbox, 1.0)
-        raw_dmg = base_damage * multiplier
-
-        if hitbox == "Thorax" and self.durability > 0:
-            if bullet_pen_class >= self.armor_level:
-                actual_dmg = raw_dmg
-                self.durability = max(0, self.durability - 15)
-                result = f"PENETRATION! Armor durability down to {self.durability}"
-            else:
-                actual_dmg = raw_dmg * 0.15
-                self.durability = max(0, self.durability - 5)
-                result = f"BLOCKED by Level {self.armor_level} Plate! Blunt damage applied."
+    def apply_treatment(self, medical_item):
+        if medical_item == "Tourniquet" and self.heavy_bleeding:
+            self.heavy_bleeding = False
+            print("[MEDICAL] Tourniquet applied. Heavy bleeding stopped.")
+        elif medical_item == "Surgical Kit" and self.fractured_leg:
+            self.fractured_leg = False
+            print("[MEDICAL] Surgical kit used. Fracture repaired.")
         else:
-            actual_dmg = raw_dmg
-            result = "UNARMED HIT"
+            print(f"[MEDICAL] Used {medical_item}.")
 
-        print(f"[DAMAGE] Hitbox: {hitbox} | Raw: {raw_dmg:.1f} | Result: {result} | Final Damage: {actual_dmg:.1f}")
-        return actual_dmg
-
-print("--- TACTICAL SIMULATION ENGINE: ARMOR & HITBOX SYSTEM ---")
-target = DamageSystem(armor_level=4, armor_durability=50)
-target.process_hit("Head", 35, bullet_pen_class=3)
-target.process_hit("Thorax", 35, bullet_pen_class=3)
-target.process_hit("Thorax", 35, bullet_pen_class=4)
+print("--- TACTICAL SIMULATION ENGINE: MEDICAL SYSTEM ---")
+med = MedicalSystem()
+med.receive_injury("bleeding")
+med.receive_injury("fracture")
+med.apply_treatment("Tourniquet")
+med.apply_treatment("Surgical Kit")
