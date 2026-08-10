@@ -1,18 +1,21 @@
-class AcousticSystem:
-    SURFACE_MODIFIERS = {"Concrete": 1.0, "Wood": 1.3, "Metal": 1.8, "Grass": 0.5}
-    MOVEMENT_MODIFIERS = {"Prone": 0.1, "Crouch": 0.4, "Walk": 1.0, "Sprint": 2.2}
+class OpticsSystem:
+    def __init__(self, mode="Naked Eye"):
+        self.mode = mode
 
-    def calculate_footstep_audio(self, movement_state, surface_type, distance_to_ai):
-        base_db = 40.0
-        move_mult = self.MOVEMENT_MODIFIERS.get(movement_state, 1.0)
-        surf_mult = self.SURFACE_MODIFIERS.get(surface_type, 1.0)
-        generated_db = base_db * move_mult * surf_mult
-        audible_db = max(0.0, generated_db - (distance_to_ai * 0.8))
-        detected = audible_db > 15.0
-        print(f"[ACOUSTICS] {movement_state} on {surface_type} | Sound: {generated_db:.1f} dB | At AI ({distance_to_ai}m): {audible_db:.1f} dB | Heard: {detected}")
-        return detected
+    def render_view(self, ambient_light_lux, target_temp_c):
+        if self.mode == "NVG":
+            gain = max(0, 100 - ambient_light_lux * 10)
+            print(f"[OPTICS - NVG] Green Phosphor Active | Image Gain: {gain}% | Ambient Lux: {ambient_light_lux}")
+        elif self.mode == "Thermal":
+            contrast = "HIGH HEAT SIGNATURE" if target_temp_c > 35 else "COLD ENVIRONMENT"
+            print(f"[OPTICS - THERMAL] White-Hot Mode | Target Temp: {target_temp_c}°C | Status: {contrast}")
+        else:
+            print(f"[OPTICS - VISUAL] Standard Optical Sight | Light Level: {ambient_light_lux} lux")
 
-print("--- TACTICAL SIMULATION ENGINE: ACOUSTIC SYSTEM ---")
-sound = AcousticSystem()
-sound.calculate_footstep_audio("Sprint", "Metal", 25)
-sound.calculate_footstep_audio("Crouch", "Grass", 25)
+print("--- TACTICAL SIMULATION ENGINE: OPTICS & SENSORS ---")
+optic = OpticsSystem()
+optic.render_view(ambient_light_lux=5, target_temp_c=37)
+optic.mode = "NVG"
+optic.render_view(ambient_light_lux=2, target_temp_c=37)
+optic.mode = "Thermal"
+optic.render_view(ambient_light_lux=2, target_temp_c=37)
