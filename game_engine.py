@@ -1,31 +1,19 @@
-class OperatorMovement:
-    def __init__(self, name):
-        self.name = name
-        self.in_cover = False
-        self.lean_state = "Center"
-        self.exposure = 100
+import random
 
-    def toggle_cover(self):
-        self.in_cover = not self.in_cover
-        self.exposure = 20 if self.in_cover else 100
-        status = "slid into cover" if self.in_cover else "stepped out of cover"
-        print(f"[TACTICS] {self.name} {status}. Body Exposure: {self.exposure}%")
+class RecoilSystem:
+    def __init__(self, vertical_recoil, horizontal_recoil, stamina_percent):
+        self.vert = vertical_recoil
+        self.horiz = horizontal_recoil
+        self.stamina = stamina_percent
 
-    def lean(self, direction):
-        if not self.in_cover:
-            print(f"[WARNING] {self.name} is in the open and cannot lean!")
-            return
-        self.lean_state = direction
-        if direction in ["Left", "Right"]:
-            self.exposure = 45
-            print(f"[ACTION] {self.name} leaning {direction}. Slicing the angle (Exposure: {self.exposure}%)")
-        else:
-            self.exposure = 20
-            print(f"[ACTION] {self.name} tucked back into Center. (Exposure: {self.exposure}%)")
+    def calculate_shot_deviation(self):
+        sway_factor = (100 - self.stamina) * 0.05
+        vert_offset = self.vert + random.uniform(-0.5, 1.5) + sway_factor
+        horiz_offset = random.uniform(-self.horiz, self.horiz) + random.uniform(-sway_factor, sway_factor)
+        print(f"[GUNPLAY] Shot Fired | Vertical Kick: +{vert_offset:.2f} MOA | Horizontal Drift: {horiz_offset:.2f} MOA | Stamina Sway Impact: +{sway_factor:.2f}")
+        return vert_offset, horiz_offset
 
-print("--- TACTICAL SIMULATION ENGINE: COVER & LEAN ---")
-player = OperatorMovement("Operator Alpha")
-player.lean("Right")
-player.toggle_cover()
-player.lean("Right")
-player.lean("Center")
+print("--- TACTICAL SIMULATION ENGINE: RECOIL & SWAY ---")
+gun = RecoilSystem(vertical_recoil=2.5, horizontal_recoil=1.2, stamina_percent=40)
+for i in range(3):
+    gun.calculate_shot_deviation()
