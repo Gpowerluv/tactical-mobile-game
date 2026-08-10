@@ -1,34 +1,30 @@
 import random
 
-class ArmaTacticalSim:
+class ArmaCombatSim:
     def __init__(self, name):
         self.name = name
         self.hp = 100
-        self.stamina = 100
-        self.suppression = 0
-        self.stance = "Standing"
+        self.plate_armor = 50  # Plate carrier durability
 
-    def move(self, sprinting=False):
-        cost = 25 if sprinting else 10
-        self.stamina = max(0, self.stamina - cost)
-        print(f"{self.name} moved (Sprinting: {sprinting}). Stamina: {self.stamina}/100")
+    def take_hit(self, zone, base_dmg):
+        if zone == "Chest" and self.plate_armor > 0:
+            absorbed = min(self.plate_armor, base_dmg * 0.7)
+            self.plate_armor -= int(absorbed)
+            actual_dmg = int(base_dmg - absorbed)
+            print(f"{self.name}'s plate carrier absorbed {int(absorbed)} damage! Armor left: {self.plate_armor}")
+        elif zone == "Head":
+            actual_dmg = base_dmg * 2
+            print(f"[CRITICAL] Headshot on {self.name}!")
+        else:
+            actual_dmg = base_dmg
+            print(f"{self.name} took an unarmored hit to the {zone}!")
 
-    def take_suppressive_fire(self):
-        self.suppression = min(100, self.suppression + 40)
-        print(f"[SUPPRESSION] {self.name} is pinned down by incoming rounds! Suppression Level: {self.suppression}%")
+        self.hp = max(0, self.hp - actual_dmg)
+        print(f"{self.name} HP remaining: {self.hp}/100\n")
 
-    def fire_weapon(self, target):
-        if self.suppression > 50:
-            print(f"{self.name} is too suppressed to aim accurately! Shots went wide.")
-            return
-        
-        damage = random.randint(15, 25)
-        target.take_suppressive_fire()
-        print(f"{self.name} fires back, applying suppression to {target.name}!")
+# Test engagement with armor zones
+operator = ArmaCombatSim("Operator Alpha")
+hostile = ArmaCombatSim("Opfor AI")
 
-# Simulate a tactical engagement
-op1 = ArmaTacticalSim("Operator Alpha")
-op2 = ArmaTacticalSim("Opfor Combatant")
-
-op1.move(sprinting=True)
-op1.fire_weapon(op2)
+hostile.take_hit("Chest", 40)
+operator.take_hit("Head", 30)
