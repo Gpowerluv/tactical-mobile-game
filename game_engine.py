@@ -1,14 +1,22 @@
-class EnvironmentalBallistics:
-    def __init__(self, wind_speed_ms, wind_direction_deg):
-        self.wind_speed = wind_speed_ms
-        self.wind_direction = wind_direction_deg
+class InventoryManager:
+    def __init__(self, capacity_kg=30.0):
+        self.capacity = capacity_kg
+        self.items = {}
 
-    def calculate_wind_drift(self, distance_m, time_of_flight_s):
-        # Simplified crosswind deflection formula
-        drift_cm = (self.wind_speed * time_of_flight_s) * 100
-        print(f"[ENVIRONMENT] Wind: {self.wind_speed} m/s at {self.wind_direction}° | Target Distance: {distance_m}m | Drift Deflection: {drift_cm:.1f} cm")
-        return drift_cm
+    def add_item(self, name, weight_kg):
+        current_weight = sum(self.items.values())
+        if current_weight + weight_kg > self.capacity:
+            print(f"[OVERBURDENED] Cannot add {name} ({weight_kg}kg)! Weight capacity exceeded.")
+            return False
+        self.items[name] = weight_kg
+        total = current_weight + weight_kg
+        mobility_penalty = (total / self.capacity) * 40  # Max 40% speed drop at full load
+        print(f"[INVENTORY] Added {name} ({weight_kg}kg) | Load: {total:.1f}/{self.capacity}kg | Movement Speed: -{mobility_penalty:.1f}%")
+        return True
 
-# Test environmental calculation
-env = EnvironmentalBallistics(4.5, 90)
-env.calculate_wind_drift(500, 0.65)
+# Test inventory load
+loadout = InventoryManager(30.0)
+loadout.add_item("Plate Carrier & Plates", 8.5)
+loadout.add_item("HK416 Rifle + Ammo", 6.2)
+loadout.add_item("First Aid Kit", 1.5)
+loadout.add_item("Tactical Backpack", 15.0)
