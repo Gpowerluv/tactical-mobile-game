@@ -1,0 +1,66 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public interface IHUDView
+{
+    void UpdateHealthDisplay(float currentHealth, float maxHealth);
+    void UpdateAmmoDisplay(int currentMag, int reserveAmmo);
+    void ToggleInventoryOverlay(bool isOpen);
+}
+
+public class TacticalHUDView : MonoBehaviour, IHUDView
+{
+    [Header("UI Bindings")]
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private Text ammoText;
+    [SerializeField] private GameObject inventoryPanel;
+
+    public void UpdateHealthDisplay(float currentHealth, float maxHealth)
+    {
+        if (healthBar != null)
+        {
+            healthBar.value = currentHealth / maxHealth;
+        }
+    }
+
+    public void UpdateAmmoDisplay(int currentMag, int reserveAmmo)
+    {
+        if (ammoText != null)
+        {
+            ammoText.text = $"{currentMag} / {reserveAmmo}";
+        }
+    }
+
+    public void ToggleInventoryOverlay(bool isOpen)
+    {
+        if (inventoryPanel != null)
+        {
+            inventoryPanel.SetActive(isOpen);
+        }
+    }
+}
+
+public class HUDPresenter
+{
+    private IHUDView view;
+
+    public HUDPresenter(IHUDView hudView)
+    {
+        view = hudView;
+    }
+
+    public void OnPlayerHealthChanged(float current, float max)
+    {
+        view.UpdateHealthDisplay(current, max);
+    }
+
+    public void OnWeaponFired(int currentMag, int reserve)
+    {
+        view.UpdateAmmoDisplay(currentMag, reserve);
+    }
+
+    public void OnInventoryButtonPressed(bool isOpen)
+    {
+        view.ToggleInventoryOverlay(isOpen);
+    }
+}
