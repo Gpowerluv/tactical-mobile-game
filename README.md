@@ -1,33 +1,46 @@
-# Tactical Mobile Game
+# 🦅 Tactical Mobile Simulation (TMS) Engine
 
-Welcome to the official repository for our tactical mobile game project. This repository contains our core game engine, player controllers, audio management systems, and modular automation tools.
+[![Build Status](https://github.com/Gpowerluv/tactical-mobile-game/actions/workflows/ci.yml/badge.svg)](https://github.com/Gpowerluv/tactical-mobile-game/actions)
+[![Engine](https://img.shields.io/badge/Godot-4.x-blue.svg)](https://godotengine.org/)
+[![Logic](https://img.shields.io/badge/Python-3.10-yellow.svg)](https://python.org)
+[![Operational Status](https://img.shields.io/badge/Status-Pre--Alpha-red.svg)]()
 
----
+## 📌 Mission Brief
+**Tactical Mobile Simulation (TMS)** is a rigorous, highly modular command-and-control (C2) tactical game engine engineered for mobile platforms. Emphasizing realism, squad-level autonomy, and hardcore physics, the TMS framework bridges the gap between desktop-grade military simulators and optimized mobile touch interfaces.
 
-## Project Overview
-
-We are building a tactical simulation game optimized for mobile devices, focusing on squad tactical control, smooth touch interactions, and immersive audio-visual feedback.
-
----
-
-## Project Structure
-
-* **`scripts/player/`**: Contains core player mechanics and controllers:
-  * `touch_controller.gd`: Handles touch inputs and mobile gestures.
-  * `SquadAIController.cs`: Manages AI decision-making and squad tactical behaviors.
-  * `SaveManager.cs`: Handles game state saving and loading.
-  * `TacticalAssetManager.cs` & `TacticalAudioManager.cs`: Manage game assets and audio playback.
-  * `TacticalHUDView.cs`: Controls the user interface and heads-up display.
-* **Core Modules**:
-  * `game_engine.py`: Core system simulation and runner.
-  * `cache_manager.py`: Manages data caching and state performance.
-  * `onboard.py`: Handles player setup and onboarding logic.
-* **`audioPool/`**: Stores audio clips, sound effects, and soundscape assets.
+Built on the **Godot Engine** with a strictly tested **Python** backend for complex mathematical logic (such as ballistics and advanced trajectory systems), this project serves as the foundational architecture for granular battlefield management.
 
 ---
 
-## Team Workflow & Guidelines
+## ⚙️ Systems Architecture & Capabilities
 
-1. **Pull Before Working**: Always run `git pull` before starting new development to ensure you have the latest updates from the team.
-2. **Branching**: Create feature-specific branches for new additions rather than pushing directly to `main`.
-3. **Clean Commits**: Write clear, descriptive commit messages for your changes.
+### 1. Command & Control (C2) Interface
+Designed for high-stress mobile deployment, the HUD abstracts complex orders into accessible operational primitives:
+* **TacticalHUDView:** The primary viewport overlay for battlefield telemetry.
+* **Waypointing (`MoveButton`):** Designate exact spatial coordinates for fireteam maneuverability.
+* **Stance & Posture (`HoldButton`):** Enforce strict position-hold and defensive overwatch rules of engagement.
+
+### 2. Autonomous Operations (`SquadAIController`)
+A dedicated singleton framework governing unit behaviors, line-of-sight tracking, and dynamic pathfinding across the combat theater.
+
+### 3. Ballistics & Kinetic Engine
+A heavily decoupled Python logic layer (`systems.ballistics`) handling raw calculations for projectile trajectories, penetration values, and environmental variables, ensuring deterministic and highly realistic combat outcomes.
+
+### 4. Theater Logistics
+* **`TacticalAssetManager`:** Dynamic memory pooling and asset provisioning for environments, entities, and ordnance.
+* **`TacticalAudioManager`:** Spatial audio rendering for distinct situational awareness (gunfire crack, radio static, footfalls).
+* **`SaveManager`:** Persistent state handling for multi-phase operations and campaign telemetry.
+
+---
+
+## 🚀 Deployment & Installation
+
+### Prerequisites
+* **Godot Engine 4.x**
+* **Python 3.10+** (For core logic testing)
+* Target Deployment: Optimized for mobile runtimes (touch interfaces, rigorously tested on hardware including iOS).
+
+### Bootstrapping the Engine
+1. **Clone the repository** to your local development environment:
+   ```bash
+   git clone [https://github.com/your-username/tactical-mobile-game.git](https://github.com/your-username/tactical-mobile-game.git)
