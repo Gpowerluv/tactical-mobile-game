@@ -1,0 +1,20 @@
+class BallisticsEngine:
+    def __init__(self, gravity=9.81):
+        self.gravity = gravity
+
+    def calculate_projectile_path(self, initial_velocity, angle_deg, time_steps):
+        import math
+        angle_rad = math.radians(angle_deg)
+        trajectory = []
+        
+        v_x = initial_velocity * math.cos(angle_rad)
+        v_y = initial_velocity * math.sin(angle_rad)
+        
+        for t in time_steps:
+            x = v_x * t
+            y = (v_y * t) - (0.5 * self.gravity * (t ** 2))
+            if y < 0:
+                break
+            trajectory.append((x, y))
+            
+        return trajectory
