@@ -1,0 +1,26 @@
+{
+  "loadout_standards": {
+    "max_weight_kg": 35.0,
+    "encumbrance_penalty_threshold": 25.0
+  },
+  "tactical_gear": [
+    {
+      "item_id": "plate_carrier_heavy",
+      "type": "Armor",
+      "weight_kg": 8.5,
+      "protection_level": "Level IV"
+    },
+    {
+      "item_id": "radio_comms_pack",
+      "type": "Communication",
+      "weight_kg": 2.0,
+      "squad_broadcast_range_m": 1500
+    },
+    {
+      "item_id": "trauma_first_aid_kit",
+      "type": "Medical",
+      "weight_kg": 1.5,
+      "use_time_s": 5
+    }
+  ]
+}
