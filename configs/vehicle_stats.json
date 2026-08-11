@@ -1,0 +1,18 @@
+{
+  "vehicles": {
+    "apc_transport": {
+      "display_name": "Armored Personnel Carrier",
+      "max_speed": 75.0,
+      "armor_rating": 150.0,
+      "capacity": 8,
+      "fuel_capacity": 100.0
+    },
+    "tactical_offroad": {
+      "display_name": "Tactical 4x4",
+      "max_speed": 110.0,
+      "armor_rating": 30.0,
+      "capacity": 4,
+      "fuel_capacity": 60.0
+    }
+  }
+}
