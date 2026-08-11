@@ -1,21 +1,20 @@
-MIT License
+TACTICAL MOBILE SIMULATION (TMS) 
+END-USER OPERATIONAL AGREEMENT (PROPRIETARY)
 
-Copyright (c) 2026 Godspower Folorunsho Adebusoye
+Copyright (c) 2026 Godspower Folorunsho Adebusoye.
+ALL OPERATIONS CLASSIFIED. ALL RIGHTS RESERVED.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software, its source code, compiled binaries, mathematical ballistics logic, and associated digital assets (collectively referred to as "The Engine" or "The Software") are the exclusive proprietary property of the copyright holder.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### 1. RULES OF ENGAGEMENT (RESTRICTED ASSETS)
+Permission to operate this Software is strictly limited. By accessing, downloading, or executing the Engine, you agree to the following terms:
+* UNAUTHORIZED REDISTRIBUTION: You are explicitly prohibited from copying, cloning, distributing, or sub-licensing the Software or any of its sub-modules (e.g., the SquadAIController, ballistics framework).
+* REVERSE ENGINEERING: Decompiling, reverse engineering, or attempting to extract the core operational logic from the compiled Engine is strictly forbidden. 
+* COMMERCIAL EXPLOITATION: This Software may not be utilized for commercial gain, monetization, or deployment in unauthorized theaters without explicit, written authorization from the copyright holder.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+### 2. INDEMNITY & OPERATIONAL RISK (LIABILITY DISCLAIMER)
+THE SOFTWARE IS DEPLOYED "AS IS", STRICTLY WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A SPECIFIC TACTICAL PURPOSE, AND NON-INFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHOR, COMMAND STAFF, OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, LOSS OF DATA, DEVICE FAILURE, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+
+Execution of this Software confirms your acceptance of all operational risks.
