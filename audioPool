@@ -1,0 +1,29 @@
+extends Node
+
+# Configuration
+export var pool_size: int = 10
+var audio_players: Array = []
+
+func _ready() -> void:
+	# Initialize the audio pool
+	for i in range(pool_size):
+		var player = AudioStreamPlayer.new()
+		add_child(player)
+		audio_players.append(player)
+
+# Function to play a sound effect using an available player from the pool
+func play_sound(stream: AudioStream) -> void:
+	for player in audio_players:
+		if not player.playing:
+			player.stream = stream
+			player.play()
+			return
+	
+	# Fallback if all players are busy: create a temporary one
+	var overflow_player = AudioStreamPlayer.new()
+	add_child(overflow_player)
+	overflow_player.stream = stream
+	overflow_player.play()
+	# Clean up after playback
+	await overflow_player.finished
+	overflow_player.queue_free()
