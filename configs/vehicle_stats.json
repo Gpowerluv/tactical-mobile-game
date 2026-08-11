@@ -2,6 +2,7 @@
   "vehicles": {
     "apc_transport": {
       "display_name": "Armored Personnel Carrier",
+      "type": "land",
       "max_speed": 75.0,
       "armor_rating": 150.0,
       "capacity": 8,
@@ -9,10 +10,31 @@
     },
     "tactical_offroad": {
       "display_name": "Tactical 4x4",
+      "type": "land",
       "max_speed": 110.0,
       "armor_rating": 30.0,
       "capacity": 4,
       "fuel_capacity": 60.0
+    },
+    "transport_helicopter": {
+      "display_name": "Tactical Helicopter",
+      "type": "air",
+      "max_speed": 240.0,
+      "armor_rating": 50.0,
+      "capacity": 6,
+      "fuel_capacity": 250.0,
+      "max_altitude": 500.0,
+      "rotor_speed": 350.0
+    },
+    "recon_drone": {
+      "display_name": "Recon UAV",
+      "type": "air",
+      "max_speed": 90.0,
+      "armor_rating": 10.0,
+      "capacity": 0,
+      "fuel_capacity": 30.0,
+      "max_altitude": 300.0,
+      "rotor_speed": 1200.0
     }
   }
 }
