@@ -1,0 +1,1 @@
+using UnityEngine; public class StanceController : MonoBehaviour { public enum Stance { Standing, Crouching, Prone }; public Stance currentStance = Stance.Standing; public float leanAngle = 0f; public void SetStance(Stance newStance) { currentStance = newStance; } public void SetLean(float angle) { leanAngle = Mathf.Clamp(angle, -30f, 30f); } }
