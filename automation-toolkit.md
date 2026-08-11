@@ -1,0 +1,23 @@
+# Tactical Mobile Game Engine
+
+A high-performance tactical simulation engine designed for mobile platforms, featuring realistic ballistics, squad command interfaces, line-of-sight calculations, and multiplayer synchronization.
+
+---
+
+## Architecture Overview
+
+* **`systems/`**: Core simulation logic including ballistics trajectories, vision/line-of-sight calculations, and squad command routing.
+* **`networking/`**: Multiplayer peer-to-peer and client-server synchronization manager for cooperative tactical sessions.
+* **`configs/`**: Centralized weapon statistics and game balance parameters (`weapon_stats.json`).
+* **`scenes/`**: Tactical map management, deployment zones, and dynamic cover node tracking (`map_manager.py`).
+* **`tests/`**: Automated unit test suite verifying system accuracy.
+* **`.github/workflows/`**: Continuous integration pipelines via GitHub Actions.
+
+---
+
+## Getting Started
+
+1. **Clone the Repository**:
+   ```bash
+   git clone [https://github.com/Gpowerluv/automation-toolkit.git](https://github.com/Gpowerluv/automation-toolkit.git)
+   cd automation-toolkit
