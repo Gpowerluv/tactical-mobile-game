@@ -1,0 +1,1 @@
+extends Control class_name UICommandHUD signal order_selected(order_type) var available_orders = ["MOVE", "ATTACK", "BOUNDING_OVERWATCH", "REGROUP"] func _ready(): pass func trigger_radial_menu(): for order in available_orders: print("Displaying option: ", order)
