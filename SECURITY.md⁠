@@ -1,0 +1,14 @@
+# Security Policy
+
+## Supported Versions
+We release patches and security updates for the current active version of the Tactical Mobile Game repository.
+
+| Version | Supported          |
+| ------- | ------------------ |
+| main    | :white_check_mark: |
+
+## Reporting a Vulnerability
+If you discover a security vulnerability within our networking modules, simulation engine, or client code, please report it responsibly rather than opening a public issue.
+
+* **Contact**: Reach out directly via repository maintainer channels or open a private advisory on GitHub.
+* **Details to Include**: Provide a description of the vulnerability, steps to reproduce, and potential impact.
