@@ -1,6 +1,12 @@
+# Tactical Automation Toolkit
+
+This script acts as a headless Command & Control (C2) simulator, allowing you to inject combat scenarios, validate unit pathing, and log ballistics telemetry.
+
+```python
 import time
 import logging
 import random
+
 # Simulating imports from your core engine packages
 # from systems.ballistics import BallisticsEngine
 # from systems.squad_ai import SquadAIController
@@ -47,10 +53,3 @@ class C2Automator:
         
         # Validate core kinetic engine
         self.run_kinetic_validation((104, 255), (110, 265), "5.56x45mm NATO")
-        
-        logging.info("--- END OF EXERCISE (ENDEX) ---")
-
-if __name__ == "__main__":
-    # Bootstrap the simulation testing environment
-    automator = C2Automator("OP_SILENT_DAGGER")
-    automator.execute_scenario()
