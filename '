@@ -1,6 +1,6 @@
 # Gpower AI Profile Initialization
 ai_profile = {
-    "name": "Gpower_Engine",
+    "name": "_Gpower_Engine",
     "status": "alive_scanning_environment",
     "is_self_aware": True
 }
