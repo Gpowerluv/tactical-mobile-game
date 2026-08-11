@@ -1,28 +1,28 @@
-# Contributing to Tactical Mobile Game
+# Standard Operating Procedure (SOP): Engine Contributions
 
-We welcome contributions from the team! To keep our codebase clean, optimized, and stable, please follow these guidelines when adding features or fixing bugs.
-
----
-
-## Branching Workflow
-
-1. **Create a Feature Branch**: Never push directly to `main`. Create a descriptive branch for your task:
-   * `feature/ballistics-update`
-   * `bugfix/touch-controls`
-   * `net/multiplayer-sync`
-2. **Keep Branches Updated**: Regularly pull changes from `main` into your working branch to avoid merge conflicts.
+Welcome to the development team. To maintain operational readiness, minimize structural regressions, and ensure the absolute stability of the Tactical Mobile Simulation engine, all operators must strictly adhere to the following protocols when deploying new features or patching engine logic.
 
 ---
 
-## Coding Standards
+## Tactical Branching Protocols
 
-* **Python & C#**: Follow clean coding practices, include comments for complex math or simulation loops, and ensure all unit tests pass before submitting.
-* **Testing**: Add or update unit tests in the `tests/` directory for any new logic you introduce.
+### 1. Establish an Operational Sector (Feature Branches)
+Direct code insertions to the `main` branch are strictly prohibited. All development must occur in isolated, descriptive branches before being cleared for integration.
+* **Feature Integration:** `feature/ballistics-update`
+* **Vulnerability Mitigation:** `bugfix/touch-controls`
+* **Infrastructure/Telemetry:** `net/multiplayer-sync`
+
+### 2. Maintain Synchronization (Syncing)
+Operators must continuously pull the latest operational state from `main` into their working branches. Failure to sync regularly leads to critical merge conflicts during final deployment. Keep your local intel up to date.
 
 ---
 
-## Pull Request Process
+## Engineering Rules of Engagement (ROE)
 
-1. Open a Pull Request (PR) against the `main` branch.
-2. Ensure all automated GitHub Actions CI tests pass successfully.
-3. Request a review from a team member before merging your code.
+### Strict Syntax Discipline (Python, C#, & GDScript)
+Code clean, code precise. Maintain rigorous architectural discipline across all scripts. Any complex mathematical telemetry—specifically within `systems.ballistics` or `SquadAIController`—must be accompanied by comprehensive inline documentation to allow allied developers to understand the logic.
+
+### Automated Telemetry Validation (Testing)
+All submitted payloads must pass the automated GitHub Actions Continuous Integration (CI) pipeline. 
+* Add or update Python unit tests for all new core logic.
+* If your pull request fails the CI test battery, the insertion will be aborted and sent back for refactoring. Broken builds compromise the entire framework.
