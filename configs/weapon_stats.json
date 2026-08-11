@@ -1,0 +1,25 @@
+{
+  "weapons": {
+    "assault_rifle": {
+      "caliber": "5.56x45mm",
+      "muzzle_velocity_mps": 910,
+      "effective_range_m": 500,
+      "rate_of_fire_rpm": 750,
+      "recoil_coefficient": 1.2
+    },
+    "designated_marksman_rifle": {
+      "caliber": "7.62x51mm",
+      "muzzle_velocity_mps": 830,
+      "effective_range_m": 800,
+      "rate_of_fire_rpm": 600,
+      "recoil_coefficient": 2.1
+    },
+    "submachine_gun": {
+      "caliber": "9x19mm",
+      "muzzle_velocity_mps": 400,
+      "effective_range_m": 200,
+      "rate_of_fire_rpm": 900,
+      "recoil_coefficient": 0.8
+    }
+  }
+}
