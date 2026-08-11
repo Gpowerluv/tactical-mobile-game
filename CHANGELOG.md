@@ -1,12 +1,8 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
-## [Unreleased] - 2026-08-11
+## [Unreleased]
 ### Added
-* Core tactical simulation systems (`ballistics.py`, `vision.py`, `command_interface.py`).
-* Multiplayer networking manager (`network_manager.py`).
-* Weapon configuration stats (`weapon_stats.json`).
-* Map and tactical cover node manager (`map_manager.py`).
-* Automated CI test suite and GitHub Actions workflow.
-* Project governance: MIT License, contributing guidelines, code of conduct, and pull request/issue templates.
+- **Scenes (`/scenes`)**: Added `main.tscn` to configure the primary Node3D map environment, directional lighting, camera, and HUD attachment points.
+- **Scenes (`/scenes`)**: Added `unit.tscn` as the base CharacterBody3D template for tactical squad members linked to the squad AI controller.
+- **Networking (`/networking`)**: Added `sync_manager.py` to handle peer-to-peer state tracking, packet queuing, and multi-client position synchronization.
+- **Configurations (`/configs`)**: Added `vehicle_stats.json` defining comprehensive stats for both land transport (APCs, offroads) and air vehicles including transport helicopters and recon drones.
