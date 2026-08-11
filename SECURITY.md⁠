@@ -1,14 +1,21 @@
-# Security Policy
+# Operational Security (OPSEC) Policy
 
-## Supported Versions
-We release patches and security updates for the current active version of the Tactical Mobile Game repository.
+## Active Deployments (Supported Versions)
+We actively deploy countermeasures, patches, and engine security updates for the following operational branches of the Tactical Mobile Simulation framework.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| main    | :white_check_mark: |
+| Version / Branch | Operational Status | OPSEC Support |
+| :--- | :--- | :--- |
+| `main` (Live Ops) | Active Deployment | :white_check_mark: Fully Supported |
+| `pre-alpha` branches | Field Testing | :warning: Limited Support |
+| Legacy Builds | Decommissioned | :x: Unsupported |
 
-## Reporting a Vulnerability
-If you discover a security vulnerability within our networking modules, simulation engine, or client code, please report it responsibly rather than opening a public issue.
+## Threat Reporting & Vulnerability Mitigation
+If you discover a security vulnerability, a breach in the logic engine, or an unauthorized execution vector within the C2 framework, treat it as a critical OPSEC incident. **Do not publicly disclose the exploit.**
 
-* **Contact**: Reach out directly via repository maintainer channels or open a private advisory on GitHub.
-* **Details to Include**: Provide a description of the vulnerability, steps to reproduce, and potential impact.
+* **Signal Routing (Contact):** Reach out directly via repository direct messaging or the designated security email. Maintain strict radio silence on public channels until a patch is deployed.
+* **Intelligence Brief (Details to Include):** Provide a comprehensive SITREP (Situation Report) containing:
+  * A clear description of the vulnerability and its potential impact on the engine.
+  * Step-by-step instructions to reproduce the exploit (including required environmental conditions or payloads).
+  * The specific engine module affected (e.g., `systems.ballistics`, `SaveManager`, or `SquadAIController`).
+
+We treat all verified threat intelligence with the highest priority and will deploy countermeasures to the mainline branch as soon as threat mitigation is confirmed.
